@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"vector": "cpp",
+			"cstdlib": "cpp",
+			"algorithm": "cpp",
+			"initializer_list": "cpp",
+			"xstring": "cpp",
+			"xutility": "cpp",
+			"ostream": "cpp",
+			"xiosbase": "cpp",
+			"xlocale": "cpp"
+		}
+	}
+}
