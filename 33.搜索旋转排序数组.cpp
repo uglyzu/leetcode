@@ -6,11 +6,11 @@
  * https://leetcode-cn.com/problems/search-in-rotated-sorted-array/description/
  *
  * algorithms
- * Medium (36.57%)
+ * Medium (36.58%)
  * Likes:    275
  * Dislikes: 0
- * Total Accepted:    28.5K
- * Total Submissions: 78K
+ * Total Accepted:    28.6K
+ * Total Submissions: 78.1K
  * Testcase Example:  '[4,5,6,7,0,1,2]\n0'
  *
  * 假设按照升序排序的数组在预先未知的某个点上进行了旋转。
@@ -35,20 +35,59 @@
  * 输出: -1
  * 
  */
+
 #include <vector>
-#include <unordered_map>
-#include <algorithm>
-#include <iostream>
+#include<iostream>
 
 using namespace std;
 class Solution {
 public:
-    int search(vector<int>& nums, int target) {
+
+    int search_rotate_index(vector<int>& nums){
         int len = nums.size();
-        int min = 0,max = len-1;
+        int l=0,r = len-1;
+        while(l<r){
+            int mid = (l+r)/2;
+            if(nums[mid]>nums[r]){
+                l = mid+1;
+            }
+            else if(nums[mid]<nums[r]){
+                r = mid;
+            }
+            else{
+
+            }
+        }
+        return l;
+    }
+
+    int search(vector<int>& nums, int min,int max,int target){
         while(min<max){
             int mid = (min+max)/2;
+            if(target<nums[mid]){
+                max = mid;
+            }
+            else if(target>nums[mid]){
+                min = mid+1;
+            }
+            else{
+                return mid;
+            }
+        }
+        return -1;
+    }
+
+    int search(vector<int>& nums, int target) {
+        int len = nums.size();
+        if(len==0) return-1;
+        int rIndex = search_rotate_index(nums);
+        cout<<rIndex<<endl;
+        int result = search(nums, 0, rIndex,target);
+        if(result==-1){
+            return search(nums, rIndex, len,target);
+        }
+        else{
+            return result;
         }
     }
 };
-

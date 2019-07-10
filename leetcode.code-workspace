@@ -14,7 +14,9 @@
 			"xutility": "cpp",
 			"ostream": "cpp",
 			"xiosbase": "cpp",
-			"xlocale": "cpp"
+			"xlocale": "cpp",
+			"map": "cpp",
+			"cmath": "cpp"
 		}
 	}
 }
