@@ -37,8 +37,32 @@
 using namespace std;
 class Solution {
 public:
+    static bool comp(vector<int>& a, vector<int>& b){
+        if(a[0]==b[0]){
+            return a[1]<b[1];
+        }
+        return a[0]<b[0];
+    }
     vector<vector<int>> merge(vector<vector<int>>& intervals) {
+        int len = intervals.size();
+        vector<vector<int>> result;
+        if(len==0) return result;
+        sort(intervals.begin(),intervals.end(), comp);
         
+        vector<int> temp = intervals[0];
+        for(int i=1;i<len;i++){
+            vector<int>& last = intervals[i];
+            if(last[0]<=temp[1]){
+                temp[1] = max(temp[1],last[1]);
+            }
+            else{
+                result.push_back(temp);
+                temp=last;
+            }
+        }
+        result.push_back(temp);
+
+        return result;
     }
 };
 
